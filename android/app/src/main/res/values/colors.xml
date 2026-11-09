@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="paper">#FFFAF7EF</color>
     <color name="slate_charcoal">#FF0F172A</color>
     <color name="cool_gray">#FF1E293B</color>
     <color name="crisp_white">#FFF8FAFC</color>

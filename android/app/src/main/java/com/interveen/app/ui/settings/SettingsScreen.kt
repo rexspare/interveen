@@ -55,6 +55,7 @@ import com.interveen.app.ui.theme.CoolGray
 import com.interveen.app.ui.theme.CrispWhite
 import com.interveen.app.ui.theme.Emerald
 import com.interveen.app.ui.theme.QuietSlate
+import com.interveen.app.ui.theme.Rule
 import com.interveen.app.ui.theme.SlateCharcoal
 import com.interveen.app.ui.theme.SoftMist
 
@@ -213,12 +214,12 @@ fun SettingsScreen(
                     title = stringResource(R.string.settings_website),
                     onClick = onOpenWebsite,
                 )
-                HorizontalDivider(color = SlateCharcoal)
+                HorizontalDivider(color = Rule)
                 SettingsRow(
                     title = stringResource(R.string.settings_privacy),
                     onClick = onOpenPrivacy,
                 )
-                HorizontalDivider(color = SlateCharcoal)
+                HorizontalDivider(color = Rule)
                 SettingsRow(
                     title = stringResource(R.string.settings_terms),
                     onClick = onOpenTerms,
@@ -235,8 +236,8 @@ private fun SettingsSection(
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(
-            text = title.uppercase(),
-            style = MaterialTheme.typography.labelMedium,
+            text = title,
+            style = MaterialTheme.typography.labelLarge,
             color = QuietSlate,
         )
         content()

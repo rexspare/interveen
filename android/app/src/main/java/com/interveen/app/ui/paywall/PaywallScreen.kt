@@ -81,7 +81,7 @@ fun PaywallScreen(
             text = stringResource(
                 if (subscribed) R.string.paywall_subscribed_title else R.string.paywall_title,
             ),
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.headlineMedium,
         )
         Text(
             text = stringResource(
@@ -105,8 +105,14 @@ fun PaywallScreen(
         if (!subscribed && state.comparisonItem.isNotBlank()) {
             Text(
                 text = stringResource(R.string.paywall_price_line, state.comparisonItem),
-                style = MaterialTheme.typography.bodyMedium,
-                color = QuietSlate,
+                style = MaterialTheme.typography.titleLarge,
+                color = Emerald,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(EmeraldSoft)
+                    .padding(horizontal = 16.dp, vertical = 16.dp),
             )
         }
 

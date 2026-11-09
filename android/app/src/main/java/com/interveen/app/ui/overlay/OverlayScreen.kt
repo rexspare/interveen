@@ -54,7 +54,6 @@ import com.interveen.app.ui.theme.CoolGray
 import com.interveen.app.ui.theme.CrispWhite
 import com.interveen.app.ui.theme.OverlayScrim
 import com.interveen.app.ui.theme.QuietSlate
-import com.interveen.app.ui.theme.SlateCharcoal
 import com.interveen.app.ui.theme.SoftMist
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -76,7 +75,7 @@ fun OverlayScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(SlateCharcoal)
+                    .background(OverlayScrim)
                     .then(if (Build.VERSION.SDK_INT >= 31) Modifier.blur(28.dp) else Modifier),
             )
             Box(

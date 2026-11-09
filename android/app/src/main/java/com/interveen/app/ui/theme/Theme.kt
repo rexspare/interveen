@@ -5,25 +5,24 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val InterveenColorScheme = darkColorScheme(
     primary = Emerald,
-    onPrimary = SlateCharcoal,
+    onPrimary = AccentInk,
     primaryContainer = EmeraldSoft,
     onPrimaryContainer = CrispWhite,
     secondary = QuietSlate,
-    onSecondary = CrispWhite,
+    onSecondary = AccentInk,
     background = SlateCharcoal,
     onBackground = CrispWhite,
     surface = CoolGray,
     onSurface = CrispWhite,
     surfaceVariant = CoolGrayRaised,
     onSurfaceVariant = SoftMist,
-    outline = Color.Transparent,
-    outlineVariant = Color(0x1AF8FAFC),
+    outline = Rule,
+    outlineVariant = Rule,
 )
 
 @Composable

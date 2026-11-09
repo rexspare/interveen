@@ -4,8 +4,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
 import androidx.compose.ui.unit.dp
 
-val CardCorner = 20.dp
-val SoftCorner = 16.dp
+val CardCorner = 14.dp
+val SoftCorner = 10.dp
 
 val InterveenShapes = Shapes(
     extraSmall = RoundedCornerShape(10.dp),

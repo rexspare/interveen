@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,8 +22,12 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -43,9 +48,12 @@ import com.interveen.app.R
 import com.interveen.app.ui.components.CalmButton
 import com.interveen.app.ui.components.HowToEnableDialog
 import com.interveen.app.ui.components.PermissionDisclosureDialog
-import com.interveen.app.ui.components.PermissionToggleRow
+import com.interveen.app.ui.theme.AccentInk
+import com.interveen.app.ui.theme.CoolGray
+import com.interveen.app.ui.theme.CrispWhite
 import com.interveen.app.ui.theme.Emerald
 import com.interveen.app.ui.theme.QuietSlate
+import com.interveen.app.ui.theme.Rule
 import com.interveen.app.ui.theme.SlateCharcoal
 import com.interveen.app.ui.theme.SoftMist
 import kotlinx.coroutines.launch
@@ -256,11 +264,11 @@ private fun PermissionsPage(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(18.dp),
     ) {
         Text(
             text = stringResource(R.string.onboarding_permissions_title),
-            style = MaterialTheme.typography.displaySmall,
+            style = MaterialTheme.typography.headlineMedium,
         )
         Text(
             text = stringResource(
@@ -270,39 +278,95 @@ private fun PermissionsPage(
                     R.string.onboarding_permissions_body
                 },
             ),
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyMedium,
             color = SoftMist,
         )
-        if (state.needsRestrictedSettings) {
-            PermissionToggleRow(
-                title = stringResource(R.string.onboarding_restricted_title),
-                body = stringResource(R.string.onboarding_restricted_body),
-                enabled = state.restrictedSettingsAllowed,
-                onClick = onRequestRestrictedSettings,
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(16.dp))
+                .background(CoolGray),
+        ) {
+            var index = 1
+            if (state.needsRestrictedSettings) {
+                PermissionLine(
+                    index = index,
+                    title = stringResource(R.string.onboarding_restricted_title),
+                    body = stringResource(R.string.onboarding_restricted_body),
+                    enabled = state.restrictedSettingsAllowed,
+                    onClick = onRequestRestrictedSettings,
+                )
+                HorizontalDivider(color = Rule)
+                index += 1
+            }
+            PermissionLine(
+                index = index,
+                title = stringResource(R.string.onboarding_accessibility_title),
+                body = stringResource(R.string.onboarding_accessibility_body),
+                enabled = state.accessibilityGranted,
+                onClick = onRequestAccessibility,
+            )
+            HorizontalDivider(color = Rule)
+            PermissionLine(
+                index = index + 1,
+                title = stringResource(R.string.onboarding_overlay_title),
+                body = stringResource(R.string.onboarding_overlay_body),
+                enabled = state.overlayGranted,
+                onClick = onRequestOverlay,
+            )
+            HorizontalDivider(color = Rule)
+            PermissionLine(
+                index = index + 2,
+                title = stringResource(R.string.onboarding_notification_title),
+                body = stringResource(R.string.onboarding_notification_body),
+                enabled = state.notificationsGranted,
+                onClick = onRequestNotifications,
             )
         }
-        PermissionToggleRow(
-            title = stringResource(R.string.onboarding_accessibility_title),
-            body = stringResource(R.string.onboarding_accessibility_body),
-            enabled = state.accessibilityGranted,
-            onClick = onRequestAccessibility,
-        )
-        PermissionToggleRow(
-            title = stringResource(R.string.onboarding_overlay_title),
-            body = stringResource(R.string.onboarding_overlay_body),
-            enabled = state.overlayGranted,
-            onClick = onRequestOverlay,
-        )
-        PermissionToggleRow(
-            title = stringResource(R.string.onboarding_notification_title),
-            body = stringResource(R.string.onboarding_notification_body),
-            enabled = state.notificationsGranted,
-            onClick = onRequestNotifications,
-        )
         Text(
             text = stringResource(R.string.onboarding_settings_hint),
             style = MaterialTheme.typography.bodyMedium,
             color = QuietSlate,
+        )
+    }
+}
+
+@Composable
+private fun PermissionLine(
+    index: Int,
+    title: String,
+    body: String,
+    enabled: Boolean,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = index.toString(),
+            style = MaterialTheme.typography.titleMedium,
+            color = if (enabled) Emerald else QuietSlate,
+            modifier = Modifier.padding(end = 14.dp),
+        )
+        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text(text = title, style = MaterialTheme.typography.titleMedium)
+            Text(text = body, style = MaterialTheme.typography.bodyMedium, color = SoftMist)
+        }
+        Switch(
+            checked = enabled,
+            onCheckedChange = { onClick() },
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = AccentInk,
+                checkedTrackColor = Emerald,
+                uncheckedThumbColor = CrispWhite,
+                uncheckedTrackColor = Rule,
+                uncheckedBorderColor = Rule,
+                checkedBorderColor = Emerald,
+            ),
         )
     }
 }

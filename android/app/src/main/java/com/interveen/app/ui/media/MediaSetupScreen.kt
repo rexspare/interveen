@@ -58,7 +58,9 @@ import com.interveen.app.ui.components.CalmButton
 import com.interveen.app.ui.components.CalmButtonStyle
 import com.interveen.app.ui.components.QuietCard
 import com.interveen.app.ui.theme.CardCorner
+import com.interveen.app.ui.theme.AccentInk
 import com.interveen.app.ui.theme.CoolGray
+import com.interveen.app.ui.theme.CoolGrayRaised
 import com.interveen.app.ui.theme.CrispWhite
 import com.interveen.app.ui.theme.Emerald
 import com.interveen.app.ui.theme.EmeraldSoft
@@ -164,26 +166,42 @@ fun MediaSetupScreen(
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(horizontal = 8.dp),
         )
-        ReminderKindCard(
-            selected = selectedKind == GoalKind.VIDEO,
-            icon = Icons.Outlined.Videocam,
-            title = stringResource(R.string.media_kind_video),
-            body = stringResource(R.string.media_kind_video_body),
-            onClick = { selectedKind = GoalKind.VIDEO },
-        )
-        ReminderKindCard(
-            selected = selectedKind == GoalKind.IMAGE,
-            icon = Icons.Outlined.Image,
-            title = stringResource(R.string.media_kind_photo),
-            body = stringResource(R.string.media_kind_photo_body),
-            onClick = { selectedKind = GoalKind.IMAGE },
-        )
-        ReminderKindCard(
-            selected = selectedKind == GoalKind.TEXT,
-            icon = Icons.Outlined.EditNote,
-            title = stringResource(R.string.media_kind_words),
-            body = stringResource(R.string.media_kind_words_body),
-            onClick = { selectedKind = GoalKind.TEXT },
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(12.dp))
+                .background(CoolGray),
+        ) {
+            ReminderKindCard(
+                selected = selectedKind == GoalKind.VIDEO,
+                title = stringResource(R.string.media_kind_video),
+                onClick = { selectedKind = GoalKind.VIDEO },
+                modifier = Modifier.weight(1f),
+            )
+            ReminderKindCard(
+                selected = selectedKind == GoalKind.IMAGE,
+                title = stringResource(R.string.media_kind_photo),
+                onClick = { selectedKind = GoalKind.IMAGE },
+                modifier = Modifier.weight(1f),
+            )
+            ReminderKindCard(
+                selected = selectedKind == GoalKind.TEXT,
+                title = stringResource(R.string.media_kind_words),
+                onClick = { selectedKind = GoalKind.TEXT },
+                modifier = Modifier.weight(1f),
+            )
+        }
+        Text(
+            text = stringResource(
+                when (selectedKind) {
+                    GoalKind.IMAGE -> R.string.media_kind_photo_body
+                    GoalKind.TEXT -> R.string.media_kind_words_body
+                    else -> R.string.media_kind_video_body
+                },
+            ),
+            style = MaterialTheme.typography.bodyMedium,
+            color = SoftMist,
+            modifier = Modifier.padding(horizontal = 8.dp),
         )
 
         when (selectedKind) {
@@ -276,50 +294,21 @@ private enum class CaptureKind {
 @Composable
 private fun ReminderKindCard(
     selected: Boolean,
-    icon: ImageVector,
     title: String,
-    body: String,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    val border by animateColorAsState(
-        targetValue = if (selected) Emerald else Color.Transparent,
-        animationSpec = tween(220),
-        label = "kindBorder",
-    )
-    val background by animateColorAsState(
-        targetValue = if (selected) EmeraldSoft else CoolGray,
-        animationSpec = tween(220),
-        label = "kindBg",
-    )
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(CardCorner))
-            .background(background)
-            .border(1.5.dp, border, RoundedCornerShape(CardCorner))
+    Text(
+        text = title,
+        color = if (selected) AccentInk else SoftMist,
+        style = MaterialTheme.typography.titleMedium,
+        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+        modifier = modifier
+            .clip(RoundedCornerShape(12.dp))
+            .background(if (selected) Emerald else Color.Transparent)
             .clickable(onClick = onClick)
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(14.dp),
-    ) {
-        Box(
-            modifier = Modifier
-                .size(44.dp)
-                .clip(CircleShape)
-                .background(if (selected) Emerald else Color(0xFF334155)),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = if (selected) Color(0xFF06281C) else SoftMist,
-            )
-        }
-        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(text = title, style = MaterialTheme.typography.titleMedium)
-            Text(text = body, style = MaterialTheme.typography.bodyMedium, color = SoftMist)
-        }
-    }
+            .padding(vertical = 12.dp),
+    )
 }
 
 @Composable
@@ -353,7 +342,7 @@ private fun GoalPreview(state: MediaSetupUiState) {
 
 @Composable
 private fun FieldLabel(text: String) {
-    Text(text = text.uppercase(), style = MaterialTheme.typography.labelMedium, color = QuietSlate)
+    Text(text = text, style = MaterialTheme.typography.labelMedium, color = QuietSlate)
 }
 
 @Composable

@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,18 +30,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.interveen.app.ui.theme.AccentInk
 import com.interveen.app.ui.theme.CardCorner
 import com.interveen.app.ui.theme.CoolGray
 import com.interveen.app.ui.theme.CoolGrayRaised
 import com.interveen.app.ui.theme.CrispWhite
 import com.interveen.app.ui.theme.Emerald
+import com.interveen.app.ui.theme.Figure
 import com.interveen.app.ui.theme.QuietSlate
+import com.interveen.app.ui.theme.Rule
+import com.interveen.app.ui.theme.SoftCorner
 import com.interveen.app.ui.theme.SoftMist
 
 enum class CalmButtonStyle {
@@ -63,8 +69,9 @@ fun QuietCard(
         modifier = modifier
             .clip(RoundedCornerShape(CardCorner))
             .background(CoolGray)
+            .border(1.dp, Rule, RoundedCornerShape(CardCorner))
             .then(clickable)
-            .padding(20.dp),
+            .padding(16.dp),
     ) {
         content()
     }
@@ -94,12 +101,12 @@ fun PermissionToggleRow(
                 checked = enabled,
                 onCheckedChange = { onClick() },
                 colors = SwitchDefaults.colors(
-                    checkedThumbColor = CrispWhite,
+                    checkedThumbColor = AccentInk,
                     checkedTrackColor = Emerald,
-                    uncheckedThumbColor = SoftMist,
-                    uncheckedTrackColor = Color(0xFF334155),
-                    uncheckedBorderColor = Color.Transparent,
-                    checkedBorderColor = Color.Transparent,
+                    uncheckedThumbColor = CrispWhite,
+                    uncheckedTrackColor = Rule,
+                    uncheckedBorderColor = Rule,
+                    checkedBorderColor = Emerald,
                 ),
             )
         }
@@ -115,13 +122,17 @@ fun StatTile(
     QuietCard(modifier = modifier) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(
-                text = label.uppercase(),
-                style = MaterialTheme.typography.labelMedium,
+                text = label,
+                style = MaterialTheme.typography.bodyMedium,
                 color = QuietSlate,
             )
             Text(
                 text = value,
-                style = MaterialTheme.typography.headlineMedium,
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontFamily = Figure,
+                    fontWeight = FontWeight.Normal,
+                    letterSpacing = 0.sp,
+                ),
                 color = CrispWhite,
             )
         }
@@ -138,9 +149,9 @@ fun CalmButton(
 ) {
     val background by animateColorAsState(
         targetValue = when {
-            !enabled -> Color(0xFF334155)
+            !enabled -> CoolGrayRaised
             style == CalmButtonStyle.Primary -> Emerald
-            else -> CoolGrayRaised
+            else -> CoolGray
         },
         animationSpec = tween(280),
         label = "calmButtonBg",
@@ -148,18 +159,24 @@ fun CalmButton(
     val foreground by animateColorAsState(
         targetValue = when {
             !enabled -> QuietSlate
-            style == CalmButtonStyle.Primary -> Color(0xFF06281C)
+            style == CalmButtonStyle.Primary -> AccentInk
             else -> CrispWhite
         },
         animationSpec = tween(280),
         label = "calmButtonFg",
     )
+    val shape = RoundedCornerShape(SoftCorner)
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(18.dp))
+            .clip(shape)
             .background(background)
+            .border(
+                width = 1.dp,
+                color = if (style == CalmButtonStyle.Primary && enabled) Emerald else Rule,
+                shape = shape,
+            )
             .clickable(enabled = enabled, onClick = onClick)
-            .padding(horizontal = 22.dp, vertical = 16.dp),
+            .padding(horizontal = 18.dp, vertical = 12.dp),
         contentAlignment = Alignment.Center,
     ) {
         Text(
@@ -188,7 +205,7 @@ fun ProgressRing(
         val arcSize = Size(size.minDimension - strokePx, size.minDimension - strokePx)
         val topLeft = Offset(strokePx / 2f, strokePx / 2f)
         drawArc(
-            color = Color(0x33F8FAFC),
+            color = Rule,
             startAngle = -90f,
             sweepAngle = 360f,
             useCenter = false,
