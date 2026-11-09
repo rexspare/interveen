@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Interveen</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #0F172A; color: #F8FAFC; font-family: -apple-system, Inter, sans-serif; }
+    .wrap { min-height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 28px 24px max(32px, env(safe-area-inset-bottom)); box-sizing: border-box; }
+    .moment { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #94A3B8; }
+    .copy { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+    h1 { font-size: 28px; font-weight: 600; line-height: 1.2; margin: 0; }
+    p { font-size: 16px; line-height: 1.5; color: #CBD5E1; margin: 0; }
+    a#remember {
+      display: block; width: 100%; box-sizing: border-box; text-align: center; text-decoration: none;
+      border: 0; border-radius: 18px; padding: 16px 22px; background: #10B981; color: #06281C;
+      font-size: 16px; font-weight: 600; min-height: 48px; touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="moment">A moment.</div>
+    <div class="copy">
+      <h1 id="title">Remember why you started.</h1>
+      <p id="body">This pause is the win.</p>
+    </div>
+    <a id="remember" href="https://www.google.com/" role="button">I Remember My Goal</a>
+  </div>
+  <script>
+    const api = globalThis.browser || globalThis.chrome;
+    const SAFE_URL = "https://www.google.com/";
+    try {
+      api.runtime.sendMessage({ type: "evaluate", url: location.href }).then((goal) => {
+        if (goal && goal.title) document.getElementById("title").textContent = goal.title;
+        if (goal && goal.body) document.getElementById("body").textContent = goal.body;
+        if (goal && goal.remember) document.getElementById("remember").textContent = goal.remember;
+      }).catch(() => {});
+    } catch (_) {}
+    let leaving = false;
+    function remember(event) {
+      if (leaving) return;
+      leaving = true;
+      if (event) event.preventDefault();
+      try { api.runtime.sendMessage({ type: "remembered", evidence: "blocked" }); } catch (_) {}
+      try { location.assign(SAFE_URL); } catch (_) { location.href = SAFE_URL; }
+    }
+    const button = document.getElementById("remember");
+    button.addEventListener("click", remember);
+    button.addEventListener("touchend", remember, { passive: false });
+  </script>
+</body>
+</html>

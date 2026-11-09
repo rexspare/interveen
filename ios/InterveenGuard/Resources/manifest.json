@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Interveen Guard",
+  "description": "Pauses blocked pages in Safari and shows your personal goal reminder.",
+  "version": "1.0.4",
+  "background": {
+    "scripts": ["matcher.js", "background.js"],
+    "persistent": false
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Interveen Guard"
+  },
+  "content_scripts": [
+    {
+      "js": ["matcher.js", "content.js"],
+      "matches": ["*://*/*"],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "js": ["matcher.js", "content.js"],
+      "matches": ["*://*/*"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "permissions": ["nativeMessaging", "tabs", "webNavigation"],
+  "host_permissions": ["*://*/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html"],
+      "matches": ["*://*/*"]
+    }
+  ]
+}

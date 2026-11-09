@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Interveen.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/slate_charcoal</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+        <item name="windowSplashScreenAnimationDuration">0</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/slate_charcoal</item>
+        <item name="android:windowSplashScreenBackground">@color/slate_charcoal</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+        <item name="android:windowSplashScreenAnimationDuration">0</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/slate_charcoal</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/splash_branding</item>
+        <item name="postSplashScreenTheme">@style/Theme.Interveen</item>
+        <item name="android:statusBarColor">@color/slate_charcoal</item>
+        <item name="android:navigationBarColor">@color/slate_charcoal</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>

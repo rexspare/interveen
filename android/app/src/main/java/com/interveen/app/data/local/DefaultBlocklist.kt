@@ -1,0 +1,367 @@
+package com.interveen.app.data.local
+
+/**
+ * On-device signals for adult destinations. Known domains are a fast path;
+ * TLDs, host tokens, URL paths, and keywords catch long-tail sites and
+ * adult posts on mixed platforms. Matching never leaves the device.
+ *
+ * Keywords cover every app UI language so Guard still fires when the
+ * screen text is not English. All languages are checked on every match.
+ */
+object DefaultBlocklist {
+
+    val domains: Set<String> = setOf(
+        "pornhub.com",
+        "xvideos.com",
+        "xnxx.com",
+        "xhamster.com",
+        "redtube.com",
+        "youporn.com",
+        "tube8.com",
+        "spankbang.com",
+        "xhamster.desi",
+        "chaturbate.com",
+        "stripchat.com",
+        "livejasmin.com",
+        "bongacams.com",
+        "onlyfans.com",
+        "manyvids.com",
+        "fansly.com",
+        "porntrex.com",
+        "hqporner.com",
+        "eporner.com",
+        "tnaflix.com",
+        "beeg.com",
+        "rule34.xxx",
+        "nhentai.net",
+        "hanime.tv",
+        "javlibrary.com",
+        "jable.tv",
+        "missav.com",
+        "javbus.com",
+        "javdb.com",
+        "thisvid.com",
+        "motherless.com",
+        "imagefap.com",
+        "pornpics.com",
+        "erome.com",
+        "fapello.com",
+        "coomer.su",
+        "kemono.su",
+        "thothub.tv",
+        "xxx.com",
+        "sex.com",
+        "porn.com",
+        "wow.xxx",
+        "redgifs.com",
+        "youjizz.com",
+        "e621.net",
+        "gelbooru.com",
+        "f95zone.to",
+        "literotica.com",
+        "pornhd.com",
+        "xhamster.one",
+        "91porn.com",
+    )
+
+    val adultTlds: Set<String> = setOf(
+        "xxx",
+        "sex",
+        "porn",
+        "adult",
+    )
+
+    /**
+     * Catch long-tail tube hosts (foo-porn.net, xxxvideos.tv) without listing
+     * thousands of domains. Do not include "sex" or "tube" — they hit essex/youtube.
+     */
+    val hostTokens: Set<String> = setOf(
+        "porn",
+        "porno",
+        "xxx",
+        "hentai",
+        "nsfw",
+        "xvideos",
+        "xnxx",
+        "xhamster",
+        "pornhub",
+        "onlyfan",
+        "fansly",
+        "spankbang",
+        "chaturbate",
+        "stripchat",
+        "redtube",
+        "youporn",
+        "rule34",
+        "redgifs",
+        "nhentai",
+        "hanime",
+        "missav",
+        "thothub",
+        "fapello",
+        "literotic",
+        "camgirl",
+        "sexcam",
+        "bokep",
+    )
+
+    val pathTokens: Set<String> = setOf(
+        "/porn",
+        "/porno",
+        "/nsfw",
+        "/hentai",
+        "/onlyfans",
+        "/redgifs",
+        "/xxx/",
+        "/xvideos",
+        "/xnxx",
+        "/rule34",
+        "/bokep",
+        "/色情",
+        "/黄片",
+        "/야동",
+        "/エロ",
+        "/порно",
+    )
+
+    /**
+     * Ordinary networks that also host adult posts. Never match on the host
+     * alone — only on adult text, paths, or nested adult destinations.
+     */
+    val mixedHosts: Set<String> = setOf(
+        "x.com",
+        "twitter.com",
+        "t.co",
+        "facebook.com",
+        "fb.com",
+        "fb.watch",
+        "instagram.com",
+        "threads.net",
+        "reddit.com",
+        "redd.it",
+        "tiktok.com",
+        "youtube.com",
+        "youtu.be",
+        "tumblr.com",
+        "pinterest.com",
+        "bsky.app",
+        "discord.com",
+        "t.me",
+        "telegram.org",
+        "snapchat.com",
+        "twitch.tv",
+        "linkedin.com",
+        "google.com",
+        "bing.com",
+        "duckduckgo.com",
+        "yahoo.com",
+        "yahoo.co.jp",
+        "baidu.com",
+        "yandex.ru",
+        "yandex.com",
+        "naver.com",
+        "vk.com",
+        "weibo.com",
+        "bilibili.com",
+        "so.com",
+        "sogou.com",
+    )
+
+    val keywords: Set<String> by lazy {
+        buildSet {
+            addAll(keywordsEnglish)
+            addAll(keywordsLatin)
+            addAll(keywordsCyrillic)
+            addAll(keywordsGreekTurkish)
+            addAll(keywordsRtl)
+            addAll(keywordsIndic)
+            addAll(keywordsCjk)
+            addAll(keywordsSea)
+        }
+    }
+
+    private val keywordsEnglish: Set<String> = setOf(
+        "porn",
+        "porno",
+        "pornhub",
+        "xvideos",
+        "xnxx",
+        "xhamster",
+        "onlyfans",
+        "only fans",
+        "fansly",
+        "nsfw",
+        "18+",
+        "xxx",
+        "hentai",
+        "rule34",
+        "jav ",
+        "erotic",
+        "adult video",
+        "sex video",
+        "nude video",
+        "nude pics",
+        "nude pic",
+        "nudes",
+        "lewd",
+        "redgifs",
+        "chaturbate",
+        "stripchat",
+        "brazzers",
+    )
+
+    private val keywordsLatin: Set<String> = setOf(
+        "video porno",
+        "videos porno",
+        "vídeo porno",
+        "filme porno",
+        "film porno",
+        "filmes porno",
+        "pornografia",
+        "pornographie",
+        "pornografie",
+        "contenido adulto",
+        "conteúdo adulto",
+        "contenido xxx",
+        "conteúdo xxx",
+        "nopor",
+        "pornô",
+        "pornos",
+        "sexvideo",
+        "sex video",
+        "nacktbilder",
+        "nacktvideo",
+        "porno video",
+        "pornovideo",
+        "sites porno",
+        "video sesso",
+        "sesso video",
+        "filmy porno",
+        "seksvideo",
+        "porrfilm",
+        "porr video",
+        "nakenvideo",
+        "seksivideo",
+        "aikuisviihde",
+        "pornó",
+        "szexvideó",
+        "filme xxx",
+        "video xxx",
+        "phim sex",
+        "phim 18+",
+        "clip nóng",
+        "bokep",
+        "film dewasa",
+        "video bokep",
+        "bold movie",
+        "pelikulang bold",
+    )
+
+    private val keywordsCyrillic: Set<String> = setOf(
+        "порно",
+        "порн",
+        "порно видео",
+        "порно відео",
+        "секс видео",
+        "секс відео",
+        "эротика",
+        "еротика",
+        "xxx видео",
+        "порновидео",
+        "голые фото",
+        "голе відео",
+    )
+
+    private val keywordsGreekTurkish: Set<String> = setOf(
+        "πορνό",
+        "πορνο",
+        "σεξ βίντεο",
+        "ερωτικό βίντεο",
+        "porno izle",
+        "seks videosu",
+        "yetişkin video",
+        "sikiş",
+    )
+
+    private val keywordsRtl: Set<String> = setOf(
+        "إباحي",
+        "اباحي",
+        "إباحية",
+        "اباحية",
+        "سكس",
+        "بورن",
+        "فيديو سكس",
+        "افلام اباحية",
+        "أفلام إباحية",
+        "پورن",
+        "پورنو",
+        "سکسی",
+        "فیلم سکسی",
+        "فيلم سوپر",
+        "فیلم سوپر",
+        "فحش",
+        "سیکس ویڈیو",
+        "سیکس وڈیو",
+        "پورن ویڈیو",
+        "פורנו",
+        "סרט פורנו",
+        "סרטי פורנו",
+        "סקס וידאו",
+    )
+
+    private val keywordsIndic: Set<String> = setOf(
+        "पोर्न",
+        "पॉर्न",
+        "सेक्स वीडियो",
+        "अश्लील",
+        "नंगा वीडियो",
+        "xxx वीडियो",
+        "পর্ন",
+        "সেক্স ভিডিও",
+        "অশ্লীল",
+        "போர்ன்",
+        "செக்ஸ் வீடியோ",
+        "పోర్న్",
+        "సెక్స్ వీడియో",
+        "પોર્ન",
+        "સેક્સ વિડિયો",
+        "सेक्स व्हिडिओ",
+        "ਪੋਰਨ",
+        "ਸੈਕਸ ਵੀਡੀਓ",
+    )
+
+    private val keywordsCjk: Set<String> = setOf(
+        "色情",
+        "黄片",
+        "黃片",
+        "色情片",
+        "色情视频",
+        "色情視頻",
+        "成人视频",
+        "成人視頻",
+        "成人影片",
+        "毛片",
+        "a片",
+        "av片",
+        "エロ",
+        "エロ動画",
+        "エロい",
+        "ポルノ",
+        "アダルト動画",
+        "無修正",
+        "야동",
+        "포르노",
+        "성인동영상",
+        "성인물",
+        "에로영화",
+        "에로 동영상",
+    )
+
+    private val keywordsSea: Set<String> = setOf(
+        "หนังโป๊",
+        "คลิปโป๊",
+        "หนังx",
+        "video za ngono",
+        "picha za uchi",
+    )
+}

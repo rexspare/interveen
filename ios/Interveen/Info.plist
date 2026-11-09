@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Interveen</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Interveen</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>5</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.interveen.appios</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>interveen</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Interveen records a short personal reminder that appears when you need it.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Interveen records audio with your reminder video.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Choose a video or still already on this device as your goal reminder.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Inter-Regular.ttf</string>
+		<string>Inter-Medium.ttf</string>
+		<string>Inter-SemiBold.ttf</string>
+	</array>
+	<key>NSFamilyControlsUsageDescription</key>
+	<string>Interveen uses Screen Time on this device to notice blocked destinations and bring your goal forward.</string>
+</dict>
+</plist>

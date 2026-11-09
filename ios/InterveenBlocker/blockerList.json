@@ -1,0 +1,552 @@
+[
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?beeg\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?bongacams\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?chaturbate\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?coomer\\.su",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?e621\\.net",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?eporner\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?erome\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?f95zone\\.to",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?fansly\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?fapello\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?gelbooru\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?hanime\\.tv",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?hqporner\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?imagefap\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?jable\\.tv",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?javlibrary\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?kemono\\.su",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?literotica\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?livejasmin\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?manyvids\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?missav\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?motherless\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?nhentai\\.net",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?onlyfans\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?porn\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?pornhd\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?pornhub\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?pornpics\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?porntrex\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?redgifs\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?redtube\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?rule34\\.xxx",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?sex\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?spankbang\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?stripchat\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?thisvid\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?thothub\\.tv",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?tnaflix\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?tube8\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?wow\\.xxx",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?xhamster\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?xhamster\\.desi",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?xhamster\\.one",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?xnxx\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?xvideos\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?xxx\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?youjizz\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://([^/]*\\.)?youporn\\.com",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://[^/]*\\.xxx([:/?]|$)",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "https?://[^/]*porn",
+      "resource-type": [
+        "document"
+      ]
+    },
+    "action": {
+      "type": "block"
+    }
+  }
+]

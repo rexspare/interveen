@@ -1,0 +1,10 @@
+{
+  "extension_name": {
+    "message": "Interveen Guard",
+    "description": "Safari extension name"
+  },
+  "extension_description": {
+    "message": "Pauses blocked pages in Safari and shows your personal goal reminder.",
+    "description": "Safari extension description"
+  }
+}

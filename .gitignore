@@ -1,0 +1,42 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# Secrets
+local.properties
+keystore.properties
+*.keystore
+*.jks
+.env
+
+# Android
+android/.gradle/
+android/**/build/
+android/app/release/
+android/captures/
+*.apk
+*.aab
+
+# iOS
+ios/**/DerivedData/
+ios/**/xcuserdata/
+ios/**/*.xcuserstate
+ios/**/.swiftpm/
+ios/**/Pods/
+*.ipa
+.derivedData/
+
+# Web
+web/node_modules/
+web/.next/
+web/out/
+
+# Interveen Store
+interveen-store/
+brag/
